@@ -1,0 +1,64 @@
+---
+# Slurm config (optional)
+name: "SLURM"   # MUST BE "SLURM"
+
+# Required
+partition: "single"
+job-name: "sac"    # this will be the experiment's name in slurm
+
+
+# Required - Cluster Specific
+num_parallel_jobs: 120
+ntasks: 1
+cpus-per-task: 5
+mem-per-cpu: 1024
+time: 4320
+sbatch_args:
+  exclude: "uc2n418"
+
+---
+# Experiment 1
+name: "SAC_Leverer"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/lever_sac/"   # location to save results in
+#path: "./test/test/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "LeverEnv-v0"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 1000
+  tb_log_name: 'test'
+
+
+---
+# Experiment 2
+name: "TD3_Leverer"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/lever_td3/"   # location to save results in
+#path: "./test/test/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "LeverEnv-v0"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 1000
+  tb_log_name: 'test'
+
+

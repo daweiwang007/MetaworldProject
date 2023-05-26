@@ -1,0 +1,145 @@
+---
+# Slurm config (optional)
+name: "SLURM"   # MUST BE "SLURM"
+
+# Required
+partition: "single"
+job-name: "sac"    # this will be the experiment's name in slurm
+
+
+# Required - Cluster Specific
+num_parallel_jobs: 120
+ntasks: 1
+cpus-per-task: 5
+mem-per-cpu: 1024
+time: 4320
+sbatch_args:
+  exclude: "uc2n418"
+
+---
+# Experiment 1
+name: "SAC_Reacher"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/reacher_sac/"   # location to save results in
+#path: "./test/test/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v0"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 100
+  tb_log_name: 'test'
+
+---
+# Experiment 2
+name: "PPO_Reacher"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/reacher_ppo/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v1"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 1000
+  tb_log_name: 'test'
+
+---
+# Experiment 3
+name: "TD3_Reacher"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/reacher_td3/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v0"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 100
+  tb_log_name: 'test'
+
+---
+# Experiment 4
+name: "DDPG_Reacher"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/reacher_ddpg/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v0"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 100
+  tb_log_name: 'test'
+
+---
+# Experiment 1
+name: "SAC_Test"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/test_sac/"   # location to save results in
+#path: "./test/test/"   # location to save results in
+repetitions: 1  # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v1"
+  total_timesteps: 5000
+  log_interval: 10
+  eval_freq: 1000
+  tb_log_name: 'test'
+
+---
+# Experiment 5
+name: "PPO_Reacher_Norm"
+
+# Required: Can also be set in DEFAULT
+path: "./experiments/reacher_ppo_norm/"   # location to save results in
+repetitions: 20    # number of times one set of parameters is run
+
+# Optional: Can also be set in DEFAULT
+# Only change these values if you are sure you know what you are doing.
+reps_per_job: 1    # number of repetitions in each job. useful for paralellization. defaults to 1.
+reps_in_parallel: 1 # number of repetitions in each job that are executed in parallel. defaults to 1.
+
+# Experiment Parameters:
+params:
+  env_id: "ReachEnv-v1"
+  total_timesteps: 2000000
+  log_interval: 10
+  eval_freq: 1000
+  tb_log_name: 'test'
